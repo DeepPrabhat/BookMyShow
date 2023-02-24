@@ -34,7 +34,8 @@ public class User {
     @Column(name = "gender")
     private Gender gender;
 
-    @OneToMany
+    @OneToMany()
+    @JoinColumn(name = "booking_id" , referencedColumnName = "ID")
     private List<Booking> bookingList;
 
 }

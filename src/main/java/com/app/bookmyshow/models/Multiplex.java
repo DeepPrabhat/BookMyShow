@@ -23,7 +23,11 @@ public class Multiplex {
     @Column(name = "Address")
     private Address address;
 
-    @OneToMany
+    @ManyToMany
     @Column(name = "movieList")
     private List<Movie> movies;
+
+    @OneToMany()
+    @JoinColumn(name="screen_id", referencedColumnName = "screenId")
+    private List<Screen> screen;
 }

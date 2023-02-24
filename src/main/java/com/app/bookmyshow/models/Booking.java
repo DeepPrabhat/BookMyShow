@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -25,6 +26,7 @@ public class Booking {
     @Temporal(TemporalType.DATE)
     private Date bookingDate;
 
-    @Column(name = "seat_no.")
-    private Integer seatNo;
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name="seat_id",referencedColumnName = "seatId")
+    private List<Seat> seat;
 }

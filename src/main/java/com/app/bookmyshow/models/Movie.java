@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Setter
 @Getter
@@ -30,4 +32,13 @@ public class Movie {
     @Column(name = "genre")
     @Enumerated(EnumType.STRING)
     private  Genre genre;
+
+    @Column(name = "director")
+    private String director;
+
+    @ManyToMany
+    @JoinTable(name = "MOVIE_MULTIPLEX",
+            joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movieId"),
+            inverseJoinColumns = @JoinColumn(name = "Multiplex_id", referencedColumnName = "multiplexId"))
+    private List<Multiplex> multiplex;
 }

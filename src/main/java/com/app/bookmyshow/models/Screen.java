@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Setter
 @Getter
 @Table(name = "Screen")
@@ -17,6 +19,8 @@ public class Screen {
     @Column(name = "Movie_playing")
     private String moviePlaying;
 
-    @Column(name = "seat_nos")
-    private Integer NoOfSeats;
+    @OneToMany
+    @JoinColumn(name = "Seat_id" , referencedColumnName = "seatId")
+    private List<Seat> NoOfSeats;
+
 }
